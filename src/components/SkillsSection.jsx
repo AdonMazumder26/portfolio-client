@@ -9,7 +9,7 @@ const skills = {
 
 export default function SkillsSection() {
     return (
-        <section className="text-white px-6 md:px-16 py-32">
+        <section className="text-white px-0 md:px-4 py-24 sm:py-32">
             <div className="max-w-6xl mx-auto">
 
                 {/* Section Header */}

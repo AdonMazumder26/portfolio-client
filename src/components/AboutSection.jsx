@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function AboutSection() {
     return (
-        <section className="text-white px-6 md:px-16 py-32">
+        <section className="text-white px-0 md:px-4 py-24 sm:py-32">
             <div className="max-w-3xl mx-auto text-center">
 
                 {/* Section Header */}

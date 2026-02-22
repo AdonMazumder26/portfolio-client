@@ -25,13 +25,13 @@ export default function FeaturedProjects() {
     }, []);
 
     return (
-        <section className="relative py-28 md:py-32 px-4 md:px-16 text-white overflow-hidden">
+        <div className="relative py-28 md:py-32 px-0 sm:px-4 md:px-8 text-white overflow-hidden rounded-3xl md:rounded-4xl lg:rounded-[2.25rem] w-full min-w-0">
 
             {/* 🌌 Subtle Background Layer */}
-            <div className="absolute inset-0 -z-10 bg-linear-to-b from-black via-[#0f0f16] to-black"></div>
-            <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-125 h-125 bg-purple-600/10 blur-[140px] rounded-full -z-10"></div>
+            {/* <div className="absolute inset-0 -z-10 bg-linear-to-b from-black via-[#0f0f16] to-black"></div> */}
+            {/* <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-125 h-125 bg-purple-600/10 blur-[140px] rounded-full -z-10"></div> */}
 
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto w-full min-w-0 px-2 sm:px-4 md:px-0">
 
                 {/* Header */}
                 <motion.div
@@ -56,7 +56,7 @@ export default function FeaturedProjects() {
                 </motion.div>
 
                 {loading ? (
-                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-10 lg:gap-12">
                         <SkeletonCard />
                         <SkeletonCard />
                         <SkeletonCard />
@@ -70,13 +70,13 @@ export default function FeaturedProjects() {
                 bg-white/4
                 backdrop-blur-md
                 border border-white/10
-                rounded-3xl
-                p-4 md:p-10
+                rounded-3xl md:rounded-4xl lg:rounded-[2.25rem]
+                p-3 sm:p-6 md:p-10
               "
                         >
-                            <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-white/5 to-transparent pointer-events-none"></div>
+                            <div className="absolute inset-0 rounded-3xl md:rounded-4xl lg:rounded-[2.25rem] bg-linear-to-br from-white/5 to-transparent pointer-events-none"></div>
 
-                            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 relative z-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-10 lg:gap-12 relative z-10 min-w-0">
                                 {projects.map((project) => (
                                     <ProjectCard key={project._id} project={project} />
                                 ))}
@@ -107,6 +107,6 @@ export default function FeaturedProjects() {
                 )}
 
             </div>
-        </section>
+        </div>
     );
 }

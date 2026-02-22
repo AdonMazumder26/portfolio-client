@@ -13,6 +13,8 @@ export default function ProjectCard({ project }) {
             className="
         group
         relative
+        w-full
+        min-w-0
         overflow-hidden
         rounded-3xl
         border border-white/10
@@ -36,7 +38,7 @@ export default function ProjectCard({ project }) {
             )}
 
             {/* CONTENT */}
-            <div className="p-7">
+            <div className="p-5 sm:p-6 md:p-7">
 
                 {/* Top Meta Row */}
                 <div className="flex justify-between items-center mb-5">

@@ -39,9 +39,9 @@ export default function ContactSection() {
     };
 
     return (
-        <section className="relative py-32 px-6 md:px-20 text-white" id="contact">
+        <section className="relative py-24 sm:py-32 px-0 sm:px-2 md:px-8 text-white" id="contact">
 
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto w-full min-w-0">
 
                 {/* Section Header */}
                 <motion.div
@@ -99,14 +99,14 @@ export default function ContactSection() {
             bg-white/5
             backdrop-blur-xl
             border border-white/10
-            rounded-3xl
-            p-10
-            space-y-7
+            rounded-2xl sm:rounded-3xl
+            p-5 sm:p-6 md:p-10
+            space-y-5 sm:space-y-7
             shadow-[0_20px_80px_rgba(0,0,0,0.4)]
           "
                 >
 
-                    <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
 
                     {/* Input Fields */}
                     <input
