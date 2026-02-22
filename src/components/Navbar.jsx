@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { HashLink } from "react-router-hash-link";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -29,83 +30,99 @@ export default function Navbar() {
             animate={{ y: 0 }}
             transition={{ duration: 0.6 }}
             className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
-                ? "bg-black/40 backdrop-blur-2xl border-b border-white/5"
-                : "bg-transparent"
+                    ? "bg-black/50 backdrop-blur-2xl border-b border-white/5 py-4"
+                    : "bg-transparent py-6"
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center text-white">
+            <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-white">
 
-                {/* Logo */}
+                {/* ===== Logo ===== */}
                 <Link
                     to="/"
-                    className="
-            font-heading
-            text-[21px] md:text-[23px]
-            font-semibold
-            tracking-[-0.03em]
-            text-white
-            transition-colors duration-300
-            hover:text-purple-400
-          "
+                    className="group relative font-semibold text-[22px] tracking-[-0.04em]"
                 >
-                    Ruhul<span className="text-purple-500">.</span>
+                    <span className="transition-colors duration-300 group-hover:text-purple-400">
+                        Ruhul
+                    </span>
+                    <span className="text-purple-500">.</span>
+
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
                 </Link>
 
-                {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-14 relative">
-
+                {/* ===== Desktop Nav ===== */}
+                <div className="hidden md:flex items-center gap-10 relative">
                     {navLinks.map((link) => {
                         const isActive = location.pathname === link.path;
 
                         return (
-                            <div key={link.name} className="relative">
-
+                            <div key={link.name} className="relative group">
                                 <Link
                                     to={link.path}
                                     className={`
                     relative
-                    px-6 py-4
-                    text-[14px]
+                    text-[16px]
                     font-medium
-                    tracking-[0.03em]
+                    tracking-[-0.03em]
                     transition-all duration-300
                     ${isActive
                                             ? "text-white"
-                                            : "text-gray-400 hover:text-white"
+                                            : "text-gray-400 group-hover:text-white"
                                         }
                   `}
                                 >
                                     {link.name}
                                 </Link>
 
-                                {/* Animated Active Pill */}
+                                {/* Active underline */}
                                 {isActive && (
                                     <motion.div
-                                        layoutId="nav-pill"
-                                        transition={{
-                                            type: "spring",
-                                            stiffness: 350,
-                                            damping: 30,
-                                        }}
+                                        layoutId="nav-active"
+                                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
                                         className="
                       absolute
-                      -inset-x-2
-                      -inset-y-1.5
-                      -z-10
+                      -bottom-2
+                      left-0
+                      w-full
+                      h-0.5
+                      bg-purple-500
                       rounded-full
-                      bg-purple-500/10
-                      border border-purple-500/25
-                      backdrop-blur-md
                     "
                                     />
+                                )}
+
+                                {/* Hover underline */}
+                                {!isActive && (
+                                    <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full rounded-full"></span>
                                 )}
                             </div>
                         );
                     })}
-
                 </div>
 
-                {/* Mobile Toggle */}
+                {/* ===== Desktop Contact (HashLink) ===== */}
+                <div className="hidden md:block">
+                    <HashLink
+                        smooth
+                        to="/#contact"
+                        className="
+              px-5 py-2.5
+              rounded-full
+              border border-white/10
+              bg-white/5
+              backdrop-blur-md
+              text-[14px]
+              font-medium
+              tracking-[-0.02em]
+              hover:border-purple-500/50
+              hover:bg-purple-500/10
+              transition-all duration-300
+            "
+                    >
+                        Contact
+                    </HashLink>
+                </div>
+
+                {/* ===== Mobile Toggle ===== */}
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
                     className="
@@ -123,20 +140,20 @@ export default function Navbar() {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {/* ===== Mobile Menu ===== */}
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -15 }}
+                        initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -15 }}
+                        exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3 }}
                         className="
               md:hidden
-              bg-black/50
+              bg-black/70
               backdrop-blur-2xl
               border-t border-white/10
-              px-8 py-8
+              px-8 py-10
               flex flex-col gap-8
               text-white
             "
@@ -149,7 +166,7 @@ export default function Navbar() {
                                 className="
                   text-[16px]
                   font-medium
-                  tracking-[0.03em]
+                  tracking-[-0.02em]
                   text-gray-300
                   hover:text-white
                   transition-colors duration-300
@@ -158,6 +175,27 @@ export default function Navbar() {
                                 {link.name}
                             </Link>
                         ))}
+
+                        <HashLink
+                            smooth
+                            to="/#contact"
+                            onClick={() => setMenuOpen(false)}
+                            className="
+                mt-4
+                text-center
+                px-6 py-3
+                rounded-full
+                border border-purple-500/40
+                bg-purple-500/10
+                text-[15px]
+                font-medium
+                tracking-[-0.02em]
+                hover:bg-purple-500/20
+                transition-all duration-300
+              "
+                        >
+                            Contact
+                        </HashLink>
                     </motion.div>
                 )}
             </AnimatePresence>
