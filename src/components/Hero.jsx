@@ -21,14 +21,11 @@ export default function Hero() {
     }, [roles.length]);
 
     return (
-        <section className="relative min-h-screen flex items-center px-6 md:px-16 pt-28 pb-20 overflow-hidden bg-[#0b0b0f] text-white">
+        <section className="relative min-h-screen flex items-center px-6 md:px-16 pt-28 pb-20 overflow-hidden text-white">
 
-            {/* ===== Soft Radial Glow Background ===== */}
-            <div className="absolute w-175 h-175 bg-purple-600/15 blur-[160px] rounded-full -top-60 -left-60" />
-            <div className="absolute w-150 h-150 bg-blue-600/15 blur-[160px] rounded-full -bottom-60 -right-60" />
-
-            {/* Bottom fade transition */}
-            <div className="absolute bottom-0 left-0 w-full h-40 bg-linear-to-b from-transparent to-[#0f0f12] pointer-events-none" />
+            {/* ===== Soft Ambient Glows (No Solid Background) ===== */}
+            {/* <div className="absolute -top-60 -left-60 w-[700px] h-[700px] bg-purple-600/10 blur-[180px] rounded-full -z-10" />
+            <div className="absolute -bottom-60 -right-60 w-[600px] h-[600px] bg-blue-600/10 blur-[180px] rounded-full -z-10" /> */}
 
             {/* ===== Floating Tech Icons ===== */}
             <motion.div
@@ -87,17 +84,17 @@ export default function Hero() {
                         Focused on performance, maintainability, and production-ready systems.
                     </p>
 
-                    <div className="mt-12 flex flex-wrap gap-5">
+                    <div className="mt-12 flex gap-4 sm:gap-5 flex-nowrap">
                         <Link
                             to="/projects"
-                            className="px-7 py-3 bg-purple-600 hover:bg-purple-700 transition-all duration-300 rounded-xl font-medium shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40"
+                            className="flex-1 sm:flex-none text-center px-5 py-3 bg-purple-600 hover:bg-purple-700 transition-all duration-300 rounded-xl font-medium shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40"
                         >
                             Explore Work →
                         </Link>
 
                         <a
                             href="#contact"
-                            className="px-7 py-3 border border-white/15 hover:border-purple-500 hover:bg-purple-600/10 transition-all duration-300 rounded-xl font-medium"
+                            className="flex-1 sm:flex-none text-center px-5 py-3 border border-white/15 hover:border-purple-500 hover:bg-purple-600/10 transition-all duration-300 rounded-xl font-medium"
                         >
                             Let’s Collaborate
                         </a>
@@ -111,7 +108,6 @@ export default function Hero() {
                     transition={{ duration: 0.9 }}
                     className="flex justify-center md:justify-end relative"
                 >
-                    {/* Subtle image glow */}
                     <div className="absolute w-80 h-80 bg-purple-600/20 blur-[120px] rounded-full" />
 
                     <motion.img
@@ -129,7 +125,7 @@ export default function Hero() {
               object-cover
               rounded-2xl
               border border-white/10
-              shadow-[0_40px_100px_rgba(0,0,0,0.7)]
+              shadow-[0_40px_100px_rgba(0,0,0,0.6)]
             "
                     />
                 </motion.div>
